@@ -1,6 +1,6 @@
 # ACMMP
 [News] The code for [ACMH](https://github.com/GhiXu/ACMH) is released!!!  
-[News] The code for [ACMM](https://github.com/GhiXu/ACMM) is released!!!
+[News] The code for [ACMM](https://github.com/GhiXu/ACMM) is released!!!  
 [News] The code for [ACMP](https://github.com/GhiXu/ACMP) is released!!!
 ## About
 This repository contains the code for Multi-Scale Geometric Consistency Guided and Planar Prior Assisted Multi-View Stereo, which is the extension of ACMM and ACMP.
@@ -17,7 +17,7 @@ make
 ```
 * Test 
 ``` 
-Use script colmap2mvsnet_acm.py to convert COLMAP SfM result to ACMP input   
+Use script colmap2mvsnet_acm.py to convert COLMAP SfM result to ACMMP input   
 Run ./ACMMP $data_folder to get reconstruction results
 ```
 ## Acknowledgemets
