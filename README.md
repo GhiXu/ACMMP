@@ -5,7 +5,7 @@
 ## About
 This repository contains the code for Multi-Scale Geometric Consistency Guided and Planar Prior Assisted Multi-View Stereo, which is the extension of ACMM and ACMP.
 ## Dependencies
-The code has been tested on Ubuntu 14.04 with GTX 1080 Ti.  
+The code has been tested on Ubuntu 16.04 with GTX 1080 Ti.  
 * [Cuda](https://developer.nvidia.com/zh-cn/cuda-downloads) >= 6.0
 * [OpenCV](https://opencv.org/) >= 2.4
 * [cmake](https://cmake.org/)
