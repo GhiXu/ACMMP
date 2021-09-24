@@ -277,11 +277,8 @@ int readDepthDmb(const std::string file_path, cv::Mat_<float> &depth)
 
     int32_t dataSize = h*w*nb;
 
-    float* data;
-    data = (float*) malloc (sizeof(float)*dataSize);
-    fread(data,sizeof(float),dataSize,inimage);
-
-    depth = cv::Mat(h,w,CV_32F,data);
+    depth = cv::Mat::zeros(h,w,CV_32F);
+    fread(depth.data,sizeof(float),dataSize,inimage);
 
     fclose(inimage);
     return 0;
@@ -339,11 +336,8 @@ int readNormalDmb (const std::string file_path, cv::Mat_<cv::Vec3f> &normal)
 
     int32_t dataSize = h*w*nb;
 
-    float* data;
-    data = (float*) malloc (sizeof(float)*dataSize);
-    fread(data,sizeof(float),dataSize,inimage);
-
-    normal = cv::Mat(h,w,CV_32FC3,data);
+    normal = cv::Mat::zeros(h,w,CV_32FC3);
+    fread(normal.data,sizeof(float),dataSize,inimage);
 
     fclose(inimage);
     return 0;
