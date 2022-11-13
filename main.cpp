@@ -253,9 +253,12 @@ void RunFusion(std::string &dense_folder, const std::vector<Problem> &problems, 
     depths.clear();
     normals.clear();
     masks.clear();
+    
+    std::map<int, int> image_id_2_index;
 
     for (size_t i = 0; i < num_images; ++i) {
         std::cout << "Reading image " << std::setw(8) << std::setfill('0') << i << "..." << std::endl;
+        image_id_2_index[problems[i].ref_image_id] = i;
         std::stringstream image_path;
         image_path << image_folder << "/" << std::setw(8) << std::setfill('0') << problems[i].ref_image_id << ".jpg";
         cv::Mat_<cv::Vec3b> image = cv::imread (image_path.str(), cv::IMREAD_COLOR);
@@ -314,7 +317,7 @@ void RunFusion(std::string &dense_folder, const std::vector<Problem> &problems, 
                 float dynamic_consistency = 0;
 
                 for (int j = 0; j < num_ngb; ++j) {
-                    int src_id = problems[i].src_image_ids[j];
+                    int src_id = image_id_2_index[problems[i].src_image_ids[j]];
                     const int src_cols = depths[src_id].cols;
                     const int src_rows = depths[src_id].rows;
                     float2 point;
@@ -375,7 +378,7 @@ void RunFusion(std::string &dense_folder, const std::vector<Problem> &problems, 
                     for (int j = 0; j < num_ngb; ++j) {
                         if (used_list[j].x == -1)
                             continue;
-                        masks[problems[i].src_image_ids[j]].at<uchar>(used_list[j].y, used_list[j].x) = 1;
+                        masks[image_id_2_index[problems[i].src_image_ids[j]]].at<uchar>(used_list[j].y, used_list[j].x) = 1;
                     }
                 }
             }
