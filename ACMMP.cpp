@@ -430,7 +430,7 @@ static float GetDisparity(const Camera &camera, const int2 &p, const float &dept
     float point3D[3];
     point3D[0] = depth * (p.x - camera.K[2]) / camera.K[0];
     point3D[1] = depth * (p.y - camera.K[5]) / camera.K[4];
-    point3D[3] = depth;
+    point3D[2] = depth;
 
     return std::sqrt(point3D[0] * point3D[0] + point3D[1] * point3D[1] + point3D[2] * point3D[2]);
 }
