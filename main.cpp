@@ -298,7 +298,6 @@ void RunFusion(std::string &dense_folder, const std::vector<Problem> &problems, 
         const int cols = depths[i].cols;
         const int rows = depths[i].rows;
         int num_ngb = problems[i].src_image_ids.size();
-        std::vector<int2> used_list(num_ngb, make_int2(-1, -1));
         for (int r =0; r < rows; ++r) {
             for (int c = 0; c < cols; ++c) {
                 if (masks[i].at<uchar>(r, c) == 1)
@@ -316,6 +315,7 @@ void RunFusion(std::string &dense_folder, const std::vector<Problem> &problems, 
                 int num_consistent = 0;
                 float dynamic_consistency = 0;
 
+                std::vector<int2> used_list(num_ngb, make_int2(-1, -1));
                 for (int j = 0; j < num_ngb; ++j) {
                     int src_id = image_id_2_index[problems[i].src_image_ids[j]];
                     const int src_cols = depths[src_id].cols;
