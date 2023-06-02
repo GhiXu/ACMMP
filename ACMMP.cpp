@@ -111,7 +111,6 @@ ACMMP::~ACMMP()
     cudaFree(cameras_cuda);
     cudaFree(plane_hypotheses_cuda);
     cudaFree(costs_cuda);
-    cudaFree(pre_costs_cuda);
     cudaFree(rand_states_cuda);
     cudaFree(selected_views_cuda);
     cudaFree(depths_cuda);
@@ -599,7 +598,6 @@ void ACMMP::CudaSpaceInitialization(const std::string &dense_folder, const Probl
 
     costs_host = new float[cameras[0].height * cameras[0].width];
     cudaMalloc((void**)&costs_cuda, sizeof(float) * (cameras[0].height * cameras[0].width));
-    cudaMalloc((void**)&pre_costs_cuda, sizeof(float) * (cameras[0].height * cameras[0].width));
 
     cudaMalloc((void**)&rand_states_cuda, sizeof(curandState) * (cameras[0].height * cameras[0].width));
     cudaMalloc((void**)&selected_views_cuda, sizeof(unsigned int) * (cameras[0].height * cameras[0].width));
